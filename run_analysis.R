@@ -74,7 +74,7 @@ if (!"reshape2" %in% installed.packages()) {
 }
 library("reshape2")
 
-# melt data to tall skinny data and cast means. Finally write the tidy data to the working directory as "tidy_data.txt"
+# melt and write the tidy data to "tidy_data.txt"
 baseData <- melt(extract_mean_std,(id.vars=c("subject","activity")))
 secondDataSet <- dcast(baseData, subject + activity ~ variable, mean)
 names(secondDataSet)[-c(1:2)] <- paste("[mean of]" , names(secondDataSet)[-c(1:2)] )
